@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <title>勞工體格管理分析 - 啟動中</title>
+  <script src="https://fhir.epic.com/interconnect-fhir-oauth/static/smart-launch.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f5f5f5;
+    }
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 40px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>勞工體格管理分析系統</h1>
+  <p>正在啟動應用程式，請稍候...</p>
+  <div class="loader"></div>
+
+  <!-- FHIR App Launch Script -->
+  <script>
+    FHIR.oauth2.authorize({
+      clientId: "your-app-client-id-here",  // 請替換為您的 Client ID
+      scope: "launch patient/*.read openid profile",
+      redirectUri: "index.html",
+      iss: "https://thas.mohw.gov.tw/v/r4/fhir"  // 台灣健保署測試 FHIR 伺服器
+    });
+  </script>
+</body>
+</html>
